@@ -7,18 +7,18 @@ int main(){
     char *str = malloc(sizeof(char));
     printf("Please enter the hex string: ");
     char ch, *endptr;
-    int strlen = 0;
+    int len = 0;
     while(ch != '\n'){
         ch = getchar();
-        str = realloc(str,sizeof(char) * strlen+1);
-        str[strlen] = ch;
-        strlen++;
+        str = realloc(str,sizeof(char) * len+1);
+        str[len] = ch;
+        len++;
     }
-    str[strlen-1] = '\0';
-    //printf("%d\n",strlen);
-    char convert[(strlen-3)/2];
+    str[len-1] = '\0';
+    //printf("%d\n",len);
+    char convert[(len-3)/2];
     int convertlen = 0,valid = 1;;
-    for(int i=0;i<strlen-3;i+=2){
+    for(int i=0;i<len-3;i+=2){
         char tmp[2];
         tmp[0] = str[i];
         tmp[1] = str[i+1];
