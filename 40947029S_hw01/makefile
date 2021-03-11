@@ -1,11 +1,11 @@
 CC := gcc
 LDFLAGS := -lm
 TARGETS := hw0101 hw0102 hw0103 hw0104 hw0105
-hw0601_OBJ :=
-hw0602_OBJ := 
-hw0603_OBJ := 
-hw0604_OBJ := 
-hw0605_OBJ := 
+hw0101_OBJ :=
+hw0102_OBJ := 
+hw0103_OBJ := 
+hw0104_OBJ := 
+hw0105_OBJ := mystring.o
 
 .PHONY:all
 all:$(TARGETS)
