@@ -70,6 +70,8 @@ int main(){
         substr = strtok(NULL,split);
     }
     printf("\n");
-    
+    free(ostr);
+    free(key);
+    free(replace);
     
 }
