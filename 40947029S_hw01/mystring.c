@@ -52,13 +52,13 @@ size_t mystrcspn(const char *s, const char *reject){
     return min;
 }
 char *mystrpbrk(const char *s, const char *accept){
-    char *ptr = &s[strlen(s)-1];
+    char *ptr = (char *)&s[strlen(s)-1];
     int find = 0;
     for(int i=0;i<strlen(accept);i++){
         for(int j=0;j<strlen(s);j++){
             if(accept[i] == s[j]){
                 if(&s[j]<ptr){
-                    ptr = &s[j];
+                    ptr = (char *)&s[j];
                     find = 1;
                 }
             }
@@ -67,7 +67,7 @@ char *mystrpbrk(const char *s, const char *accept){
     if(find == 0){
         ptr = NULL;
     }
-    return (char *)ptr;
+    return ptr;
 }
 char *mystrstr(const char *haystack , const char *needle){
     char *ptr = NULL;
@@ -76,11 +76,11 @@ char *mystrstr(const char *haystack , const char *needle){
         if(haystack[i] == needle[count]){
             count++;
             if(count = strlen(needle)){
-                ptr = &haystack[i-strlen(needle)+2];
+                ptr = (char *)&haystack[i-strlen(needle)+2];
             }
         }
     }
-    return (char *)ptr;
+    return ptr;
 }
 char *mystrtok(char *str, const char *delim){
     int find = 0;
