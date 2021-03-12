@@ -1,6 +1,6 @@
 CC := gcc
 LDFLAGS := -lm
-TARGETS := hw0101 hw0102 hw0103 hw0104 hw0105
+TARGETS := hw0101 hw0102 hw0103 hw0104 hw0105 hw0106
 hw0101_OBJ :=
 hw0102_OBJ := 
 hw0103_OBJ := 
