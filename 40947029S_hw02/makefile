@@ -1,6 +1,6 @@
 CC := gcc
 LDFLAGS := -lm
-TARGETS := hw0201 hw0203
+TARGETS := hw0201 hw0202 hw0203
 hw0201_OBJ := mixed.o
 hw0202_OBJ := 
 hw0203_OBJ := 
