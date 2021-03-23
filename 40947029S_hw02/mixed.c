@@ -28,9 +28,15 @@ int convert(const sMixednumber mn){
 }
 
 int mixed_set( sMixednumber *num, int32_t a, int32_t b,int32_t c){
-    num->wholenum = a;
-    num->numer = b;
-    num->denom = c;
+    int valid = 0;
+    if(b>c || (a==0 && b<0) || c == 0){
+        valid = -1;
+    }else{
+        num->wholenum = a;
+        num->numer = b;
+        num->denom = c;
+    }
+    return valid;
 }
 // return -1 if invalid; otherwise , return 0.
 void mixed_print( const sMixednumber num){
