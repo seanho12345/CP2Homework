@@ -1,10 +1,10 @@
 CC := gcc
 LDFLAGS := -lm
-TARGETS := hw0201 hw0202 hw0203
+TARGETS := hw0201 hw0202 hw0203 hw0204
 hw0201_OBJ := mixed.o
 hw0202_OBJ := 
 hw0203_OBJ := 
-hw0204_OBJ := 
+hw0204_OBJ := bignum.o
 hw0205_OBJ := 
 
 .PHONY:all
