@@ -185,7 +185,7 @@ void divide( sBigNum *pQuotient , sBigNum *pRemainder , const sBigNum num01 , co
     sBigNum one = num_default;
     one.digits[0] = 1;
     one.len = 1;
-    while(compare(N,num02) == 1){
+    while(compare(N,num02) == 1 || compare(N,num02) == 0){
         subtract(&tmpnum,N,num02);
         N = tmpnum;
         add(&tmpnum,*pQuotient,one);
