@@ -218,20 +218,20 @@ void power( sBigNum *pResult , int32_t n, int32_t k ){
         }
     }
 }
-int32_t c(int32_t n,int32_t k){
+sBigNum c(int32_t n,int32_t k){
+    sBigNum one = num_default;
+    one.digits[0] = 1;
+    one.len = 1;
     if(k == 0 || n == k){
-        return 1;
+        return one;
     }else{
-        return c(n-1,k-1) + c(n-1,k);
+        sBigNum tmpnum;
+        add(&tmpnum,c(n-1,k-1),c(n-1,k));
+        return tmpnum;
     }
 }
 
 void combine( sBigNum *pResult , int32_t n, int32_t k ){
     *pResult = num_default;
-    int64_t ans = c(n,k);
-    while(ans != 0){
-        pResult->digits[pResult->len] = ans % 10;
-        ans /= 10;
-        pResult->len++;
-    }
+    *pResult = c(n,k);
 }
