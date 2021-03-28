@@ -5,7 +5,7 @@
 int main(){
     sBigNum a, b;
 
-    set( &a, "1" );
+    set( &a, "123" );
     set( &b, "99" );
 
     print( a );
