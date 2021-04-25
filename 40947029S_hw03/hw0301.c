@@ -145,6 +145,8 @@ int main(){
                             printf("%s",RED_BACK);
                             break;
                     }
+                }else{
+                    printf("%s",tmpstr);
                 }
             }
         }
