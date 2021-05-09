@@ -1,11 +1,11 @@
 CC := gcc
 LDFLAGS := -lm
-TARGETS := hw0401
-hw0201_OBJ := 
-hw0202_OBJ := 
-hw0203_OBJ := 
-hw0204_OBJ := 
-hw0205_OBJ := 
+TARGETS := hw0401 hw0403
+hw0401_OBJ := 
+hw0402_OBJ := 
+hw0403_OBJ := myprintf.o 
+hw0404_OBJ := 
+hw0405_OBJ := 
 
 .PHONY:all
 all:$(TARGETS)
