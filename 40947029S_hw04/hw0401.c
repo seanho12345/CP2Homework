@@ -88,7 +88,6 @@ int main(int argc, char *argv[]){
         }
         fclose(source);
     }else if(mode == 2){ // recovery mode
-        printf("argc: %d\n",argc);
         if(argc - 3 == 0){
             printf("Split files not given\n");
             return 0;
@@ -96,21 +95,16 @@ int main(int argc, char *argv[]){
         FILE *splitfiles[argc - 3];
         for(int i=3; i<argc; i++){
             char *rfilename = argv[i];
-            printf("%s\n",rfilename);
             FILE *tmp = fopen(rfilename, "r");
             if(tmp == NULL){
                 printf("Unable to read file\n");
                 return 0;
             }
-            printf("%p\n",tmp);
             uint8_t header = 0;
             fread(&header,sizeof(uint8_t),1,tmp);
             splitfiles[header-1] = tmp;
         }
         FILE *output = fopen(filename,"w");
-        for(int i=0; i<argc - 3; i++){
-            printf("%p\n",splitfiles[i]);
-        }
         for(int i=0; i<argc - 3; i++){
             FILE *tmp = splitfiles[i];
             while(!feof(tmp)){
