@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
                     splitsize *= 10;
                     splitsize += optarg[i] - '0';
                 }
-                printf("%d\n",splitsize);
+                //printf("%d\n",splitsize);
                 break;
             case 'r':
                 mode = 2;
@@ -76,6 +76,7 @@ int main(int argc, char *argv[]){
             wfilename[len] = '.';
             wfilename[len+1] = 48 + filecount;
             wfilename[len+2] = 0;
+            printf("%s ",wfilename);
             uint8_t header = filecount; //write header for recover usage
             FILE *output = fopen(wfilename,"w");
             fwrite(&header,sizeof(uint8_t),1,output);
@@ -86,6 +87,7 @@ int main(int argc, char *argv[]){
             filecount++;
             fclose(output);
         }
+        printf("\n");
         fclose(source);
     }else if(mode == 2){ // recovery mode
         if(argc - 3 == 0){
@@ -121,4 +123,3 @@ int main(int argc, char *argv[]){
     return 0;
 
 }
-
