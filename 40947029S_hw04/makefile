@@ -1,6 +1,6 @@
 CC := gcc
 LDFLAGS := -lm
-TARGETS := hw0401 hw0403 hw0404
+TARGETS := hw0401 hw0402 hw0403 hw0404
 hw0401_OBJ := 
 hw0402_OBJ := 
 hw0403_OBJ := myprintf.o 
