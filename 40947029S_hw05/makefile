@@ -1,6 +1,6 @@
 CC := gcc
-LDFLAGS := -lm
-TARGETS := hw0502
+LDFLAGS := -lm -lcurl
+TARGETS := hw0502 hw0503
 hw0401_OBJ := 
 hw0402_OBJ := 
 hw0403_OBJ :=
