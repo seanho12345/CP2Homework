@@ -40,6 +40,4 @@ int main(){
         lastidle = idle;
         sleep(1);
     }
-    
-    
 }
