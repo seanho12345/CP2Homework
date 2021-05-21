@@ -1,11 +1,9 @@
 CC := gcc
 LDFLAGS := -lm -lcurl
-TARGETS := hw0502 hw0503
-hw0401_OBJ := 
-hw0402_OBJ := 
-hw0403_OBJ :=
-hw0404_OBJ := 
-hw0405_OBJ := 
+TARGETS := hw0501 hw0502 hw0503
+hw0501_OBJ := 
+hw0502_OBJ := 
+hw0503_OBJ :=
 
 .PHONY:all
 all:$(TARGETS)
