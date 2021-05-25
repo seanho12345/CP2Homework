@@ -1,4 +1,3 @@
-//base64 library: https://gist.github.com/caseyscarborough/8467877
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -62,41 +61,18 @@ int main(int argc,char *argv[]){
         }
     }
     //setup file pointers
-    int inptr = open(infilename, O_RDONLY);
+    FILE *inptr = fopen(infilename, "r");
     FILE *outptr = fopen(outfilename, "w");
     //check if there's error opening file
-    if(inptr == -1){
-        printf("Unable to read file\n");
-        return 0;
-    }
+    checkfilevalid(inptr);
     checkfilevalid(outptr);
-    //get input file size
-    struct stat st;
-    fstat(inptr, &st);
-    size_t size = st.st_size;
     //encoding file
     if(enc == 1){
-        b64('e', infilename, outfilename, 72);
-        /*
-        int count;
-        unsigned char *data = mmap(0, size, PROT_READ, MAP_PRIVATE, inptr, 0);
-        char *encdata = NULL;
-        encdata = b64_encode(data, size);
-        fwrite(encdata, sizeof(char), strlen(encdata), outptr);
-        munmap(data,size);
-        */
+        encrypt(inptr, outptr);
     }
     //decoding file
     if(dec == 1){
-        b64('d', infilename, outfilename, 72);
-        /*
-        int count;
-        char *data = (char *)mmap(0, size, PROT_READ, MAP_PRIVATE, inptr, 0);
-        unsigned char *decdata = NULL;
-        decdata = b64_decode(data, size);
-        fwrite(decdata, sizeof(unsigned char), strlen(decdata), outptr);
-        munmap(data,size);
-        */
+        decrypt(inptr, outptr);
     }
     return 0;
 }
