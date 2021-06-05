@@ -8,7 +8,7 @@
 #include <sys/stat.h>    
 #include <sys/mman.h>
 #include <fcntl.h>
-#include "fileb64.h"
+#include "b64.h"
 
 struct option long_options[]= {
     {"enc", 1, NULL, 'e'},
@@ -40,6 +40,7 @@ int main(int argc,char *argv[]){
     }
     char opt;
     int enc = 0, dec = 0;
+    int isbmp = 0;
     char infilename[100] = {0}, outfilename[100] = {0};
     //get argument
     while((opt = getopt_long(argc, argv, "e:d:o:h", long_options, NULL)) != -1){
@@ -47,6 +48,17 @@ int main(int argc,char *argv[]){
             case 'e':
                 enc = 1;
                 strcpy(infilename, optarg);
+                //check if it's bmp
+                char type[4];
+                type[3] = 0;
+                int count = 2;
+                for(int i=strlen(infilename)-1; i>=0 && count>=0 && i != '.'; i--){
+                    type[count] = infilename[i];
+                    count--; 
+                }
+                if(strcmp("bmp", type) == 0){
+                    isbmp = 1;
+                }
                 break;
             case 'd':
                 dec = 1;
@@ -68,11 +80,16 @@ int main(int argc,char *argv[]){
     checkfilevalid(outptr);
     //encoding file
     if(enc == 1){
-        encrypt(inptr, outptr);
+        if(isbmp == 1){ //bmp encrypt
+            bmpencrypt(inptr, outptr);
+        }else{ //normal txt encrypt
+            txtencode(inptr, outptr);
+        }
+        
     }
     //decoding file
     if(dec == 1){
-        decrypt(inptr, outptr);
+        decode(inptr, outptr);
     }
     return 0;
 }
